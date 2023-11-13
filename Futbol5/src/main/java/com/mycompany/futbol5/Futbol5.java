@@ -3,14 +3,13 @@
  */
 
 package com.mycompany.futbol5;
+import Port.Create;
+import java.sql.SQLException;
 
-/**
- *
- * @author xdpor
- */
 public class Futbol5 {
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+    public static void main(String[] args) throws SQLException {
+        System.out.println("Prueba");
+        Create creator = new Create();
     }
 }
