@@ -3,13 +3,13 @@
  */
 
 package com.mycompany.futbol5;
-import Port.Create;
-import java.sql.SQLException;
 
 public class Futbol5 {
 
-    public static void main(String[] args) throws SQLException {
-        System.out.println("Prueba");
-        Create creator = new Create();
+    public static void main(String[] args) {
+        //Create.toInsert("Java2", "FREQUENT");
+        //System.out.println(Recover.toSelectByID(1).toString());
+        //Update.toUpdate(1, "Juan1", Recover.toSelectByID(1).getSubscriptionType());
+        //Delete.toDelete(13);
     }
 }
