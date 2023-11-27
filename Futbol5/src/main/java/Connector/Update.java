@@ -14,6 +14,16 @@ import java.sql.SQLException;
  */
 public class Update {
     public static void toUpdate(int Id, String Name, String SubscriptionType){
+        // Validate the name before proceeding
+        if (!isValidName(Name)) {
+            throw new IllegalArgumentException("Invalid name format. Please provide a complete person name.");
+        }
+        
+        // Validate the status before proceeding
+        if (!isValidStatus(SubscriptionType)) {
+            throw new IllegalArgumentException("Invalid status value. Please provide a valid status value.");
+        }
+        
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         
@@ -60,5 +70,15 @@ public class Update {
                 e.printStackTrace();
             }
         }
+    }
+    
+    // Validation method for the name field
+    private static boolean isValidName(String name) {
+        // Simple validation for a complete person name (can be adjusted based on requirements)
+        return name != null && name.matches("^[A-Za-z]+\\s+[A-Za-z]+(\\s+[A-Za-z]+)*\\s*$");
+    }
+
+    private static boolean isValidStatus(String subscriptionType) {
+        return subscriptionType.toLowerCase().equals("frequent") || subscriptionType.toLowerCase().equals("occasional");
     }
 }

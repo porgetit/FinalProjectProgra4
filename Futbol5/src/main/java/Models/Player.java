@@ -14,7 +14,9 @@ public class Player {
     private String SubscriptionType;
     
     public Player() {
-        
+        Id = -1;
+        Name = null;
+        SubscriptionType = null;        
     }
     
     public Player(int Id, String Name, String SubscriptionType) {
@@ -45,11 +47,6 @@ public class Player {
 
     public void setSubscriptionType(String SubscriptionType) {
         this.SubscriptionType = SubscriptionType;
-    }
-
-    @Override
-    public String toString() {
-        return "Player{" + "Id=" + Id + ", Name=" + Name + ", SubscriptionType=" + SubscriptionType + '}';
     }
     
 }
