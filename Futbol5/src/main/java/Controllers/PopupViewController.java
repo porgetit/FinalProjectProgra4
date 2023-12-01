@@ -10,24 +10,28 @@ import java.awt.event.ActionListener;
 
 /**
  *
- * @author 57312
+ * @author Kevin Esguerra Cardona
  */
-public class PopupViewController implements ActionListener{
+public class PopupViewController implements ActionListener {
     private PopupView view;
-    
+
     public PopupViewController() {
         view = new PopupView();
+        view.ButtonAccept.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (e.getSource() == view.ButtonAccept) {
+            view.dispose(); // Close the popup
+        }
     }
-    
-    public void init() {
+
+    public void init(String message) {
         view.setTitle("Futbol 5");
         view.setResizable(false);
         view.setLocationRelativeTo(null);
+        view.TextArea.setText(message); // Set the message in the TextArea
         view.setVisible(true);
     }
 }

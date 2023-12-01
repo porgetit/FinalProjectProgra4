@@ -6,7 +6,7 @@ package Views;
 
 /**
  *
- * @author 57312
+ * @author Kevin Esguerra Cardona
  */
 public class PlayerEditorView extends javax.swing.JFrame {
 

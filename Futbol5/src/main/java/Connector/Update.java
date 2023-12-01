@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author 57312
+ * @author Kevin Esguerra Cardona
  */
 public class Update {
     public static void toUpdate(int Id, String Name, String SubscriptionType){

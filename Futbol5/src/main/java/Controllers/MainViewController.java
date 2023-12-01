@@ -11,15 +11,19 @@ import java.awt.event.ActionListener;
 
 /**
  *
- * @author 57312
+ * @author Kevin Esguerra Cardona
  */
 public class MainViewController implements ActionListener{
     private final MainView view;
     private final Match match;
+    private boolean isTeamAComplete;
+    private boolean isTeamBComplete;
 
     public MainViewController(Match match) {
         view = new MainView();
         this.match = match;
+        isTeamAComplete = false;
+        isTeamBComplete = false;
         
         view.ButtonPlayers.addActionListener(this);
         view.ButtonTeams.addActionListener(this);
@@ -32,9 +36,9 @@ public class MainViewController implements ActionListener{
         Object button = e.getSource();
         
         if (button == view.ButtonPlayers) {
-            new PlayerManagementViewController().init();
+            new PlayerManagementViewController(match).init();
         } else if (button == view.ButtonTeams) {
-            new TeamManagementViewController().init();
+            new TeamManagementViewController(match).init();
         } else if (button == view.ButtonMatch) {
             match.run();
             updateResults();
@@ -49,8 +53,21 @@ public class MainViewController implements ActionListener{
         view.setLocationRelativeTo(null);
         view.setVisible(true);
         
+        view.TeamAPlayer1.setText("");
+        view.TeamAPlayer2.setText("");
+        view.TeamAPlayer3.setText("");
+        view.TeamAPlayer4.setText("");
+        view.TeamAPlayer5.setText("");
+        view.TeamBPlayer1.setText("");
+        view.TeamBPlayer2.setText("");
+        view.TeamBPlayer3.setText("");
+        view.TeamBPlayer4.setText("");
+        view.TeamBPlayer5.setText("");
+        
         updateResults();
         updatePlayers();
+        
+        isAbleToRun();
     }
 
     private void updateResults() {
@@ -63,13 +80,41 @@ public class MainViewController implements ActionListener{
     private void updatePlayers() {
         updatePlayersTeamA();
         updatePlayersTeamB();
+        isAbleToRun();
     }
 
     private void updatePlayersTeamA() {
-        
+        try {
+            view.TeamAPlayer1.setText(match.getTeamA().getPlayers().get(0).getName());
+            view.TeamAPlayer2.setText(match.getTeamA().getPlayers().get(1).getName());
+            view.TeamAPlayer3.setText(match.getTeamA().getPlayers().get(2).getName());
+            view.TeamAPlayer4.setText(match.getTeamA().getPlayers().get(3).getName());
+            view.TeamAPlayer5.setText(match.getTeamA().getPlayers().get(4).getName());
+            isTeamAComplete = true;            
+        } catch (IndexOutOfBoundsException e) {
+            isTeamAComplete = false;
+        }
     }
 
     private void updatePlayersTeamB() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            view.TeamBPlayer1.setText(match.getTeamB().getPlayers().get(0).getName());
+            view.TeamBPlayer2.setText(match.getTeamB().getPlayers().get(1).getName());
+            view.TeamBPlayer3.setText(match.getTeamB().getPlayers().get(2).getName());
+            view.TeamBPlayer4.setText(match.getTeamB().getPlayers().get(3).getName());
+            view.TeamBPlayer5.setText(match.getTeamB().getPlayers().get(4).getName());
+            isTeamBComplete = true;
+        } catch (IndexOutOfBoundsException e) {
+            isTeamBComplete = false;
+        }
+    }
+
+    private void isAbleToRun() {
+        if (isTeamAComplete && isTeamBComplete) {
+            view.ButtonMatch.setEnabled(true);
+            return;
+        }
+        
+        view.ButtonMatch.setEnabled(false);
     }
 }

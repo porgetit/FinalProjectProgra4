@@ -6,7 +6,7 @@ package Views;
 
 /**
  *
- * @author natha
+ * @author Kevin Esguerra Cardona
  */
 public class TeamManagementView extends javax.swing.JFrame {
 

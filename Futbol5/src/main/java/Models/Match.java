@@ -4,6 +4,7 @@
  */
 package Models;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -44,5 +45,9 @@ public class Match {
                 teamB.addTie();
             }
         }
+    }
+
+    public ArrayList<Player> retrievePlayerData() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

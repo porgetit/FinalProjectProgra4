@@ -4,9 +4,11 @@
  */
 package Models;
 
+import Connector.Update;
+
 /**
  *
- * @author 57312
+ * @author Kevin Esguerra Cardona
  */
 public class Player {
     private int Id;
@@ -47,6 +49,14 @@ public class Player {
 
     public void setSubscriptionType(String SubscriptionType) {
         this.SubscriptionType = SubscriptionType;
+    }
+    
+    public void updateDB() {
+        Update.toUpdate(Id, Name, SubscriptionType);
+    }
+
+    public Object getID() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
